@@ -9,6 +9,10 @@ class NodoAlumno {
 
     public:
         NodoAlumno(Alumno alumno);
+
+        NodoAlumno* getSig();
+        void setSig(NodoAlumno* nuevo);
+
         NodoAlumno* insertar();
         NodoAlumno* eliminar();
         ~NodoAlumno();
