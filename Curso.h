@@ -10,6 +10,7 @@ class Curso {
         std::string profesor;
 
     public:
+        Curso();
         Curso(int id, std::string nombre, int maxEst, std::string carrera,
             std::string profesor);
 

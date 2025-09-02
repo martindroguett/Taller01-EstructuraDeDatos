@@ -11,6 +11,7 @@ class Alumno {
         std::string fechaIngreso;
 
     public:
+        Alumno();
         Alumno(int id, std::string nombre, std::string apellido, 
             std::string carrera, std::string fechaIngreso);
         

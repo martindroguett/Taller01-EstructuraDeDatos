@@ -1,7 +1,7 @@
 #include "Curso.h"
 #include <string>
 
-Curso:: Curso(int id, std::string nombre, int maxEst, std::string carrera,
+Curso::Curso(int id, std::string nombre, int maxEst, std::string carrera,
             std::string profesor) {
     
     this -> id = id;
