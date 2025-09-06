@@ -1,6 +1,14 @@
 #include "Alumno.h"
 #include <string>
 
+Alumno::~Alumno() {
+    
+}
+
+Alumno::Alumno() {
+
+}
+
 Alumno::Alumno(int id, std::string nombre, std::string apellido, 
             std::string carrera, std::string fechaIngreso){
     
