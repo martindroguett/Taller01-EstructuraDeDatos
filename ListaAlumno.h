@@ -10,9 +10,10 @@ class ListaAlumno {
         ListaAlumno();
         ~ListaAlumno();
 
-        void insertar(Alumno alumno);
+        void insertar(Alumno& alumno);
         void buscar(int id);
         void buscar(std::string nombre);
+        void eliminar(int id);
         void ver();
 
 };

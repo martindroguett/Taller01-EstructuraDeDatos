@@ -14,6 +14,6 @@ void NodoAlumno::setSig(NodoAlumno* nuevo) {
     this -> sig = nuevo;
 }
 
-Alumno NodoAlumno::getAlumno() {
+Alumno& NodoAlumno::getAlumno() {
     return alumno;
 }

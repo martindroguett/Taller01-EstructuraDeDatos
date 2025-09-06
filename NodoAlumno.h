@@ -11,7 +11,7 @@ class NodoAlumno {
         NodoAlumno(Alumno alumno);
 
         NodoAlumno* getSig();
-        Alumno getAlumno();
+        Alumno& getAlumno();
         void setSig(NodoAlumno* nuevo);
         ~NodoAlumno();
     

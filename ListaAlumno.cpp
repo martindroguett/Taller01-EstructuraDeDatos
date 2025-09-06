@@ -10,7 +10,7 @@ ListaAlumno::~ListaAlumno() {
 
 }
 
-void ListaAlumno::insertar(Alumno alumno) {
+void ListaAlumno::insertar(Alumno& alumno) {
     NodoAlumno* newNodo = new NodoAlumno(alumno);
 
     if (head == nullptr) {
@@ -78,9 +78,44 @@ void ListaAlumno::buscar(std::string nombre) {
 
 }
 
+void ListaAlumno::eliminar(int id) {
+    if (head == nullptr) {
+        std::cout << "No hay nada que eliminar" << std::endl;
+        return;
+    }
+
+    NodoAlumno* aux = head;
+
+    if (aux -> getAlumno().getId() == id) {
+        head = head -> getSig();
+        delete aux;
+
+        std::cout << "Alumno eliminado con éxito" << std::endl;
+
+        return;
+    }
+
+    NodoAlumno* aux2 = head -> getSig();
+
+    while (aux2 != nullptr && aux2 -> getAlumno().getId() != id) {
+        aux = aux -> getSig();
+        aux2 = aux2 -> getSig();
+    }
+    
+    if (aux2 == nullptr) {
+        std::cout << "No existe un alumno con la id " << id << std::endl;
+        return;
+    }
+
+    aux -> setSig(aux2 -> getSig());
+    delete aux2;
+
+    std::cout << "Alumno eliminado con éxito" << std::endl;
+}
+
 void ListaAlumno::ver() {
     if (head == nullptr) {
-        std::cout << "No hay nada" << std::endl;
+        std::cout << "No hay nada que mostrar" << std::endl;
         return;
     }
 

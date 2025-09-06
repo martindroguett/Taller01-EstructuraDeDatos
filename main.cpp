@@ -7,6 +7,7 @@ using namespace std;
 
 ListaAlumno lista = ListaAlumno();
 
+//Listo - falta control error
 void registrarAlumno() {
     int id;
     string nombre;
@@ -32,11 +33,12 @@ void registrarAlumno() {
     Alumno alumno = Alumno(id, nombre, apellido, carrera, fechaIngreso);
 
     lista.insertar(alumno);
-
+         
     cout << "¡Alumno registrado con éxito!" << endl;
 
 }
 
+//Listo - falta control error
 void buscarAlumno() {
     string opcion;
 
@@ -46,14 +48,29 @@ void buscarAlumno() {
     try { 
         lista.buscar(stoi(opcion));
 
-    } catch (exception e) {
+    } catch (exception& e) {
         lista.buscar(opcion);
     }
     
 }
 
+//falta control error - eliminar registro de notas e historial de cursos
 void eliminarAlumno() {
+    string id;
 
+    cout << "Ingrese id de alumno a eliminar: ";
+    cin >> id;
+    bool valido = false;
+
+    while (!valido) {
+        try {
+            lista.eliminar(stoi(id));
+            valido = true;
+
+        } catch (exception& e) {
+            cout << "La id ingresada no es válida." << endl << endl;
+        }
+    }
 }
 
 void gestionAlumno() {
