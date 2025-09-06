@@ -32,14 +32,14 @@ void ListaAlumno::buscar(int id) {
     NodoAlumno* aux = head;
 
     while(aux != nullptr) {
-        if (aux -> getAlumno().getId() == id) {
-            Alumno alumno = aux -> getAlumno();
+        if (aux -> getAlumno() -> getId() == id) {
+            Alumno* alumno = aux -> getAlumno();
 
-            std::cout << "Id: " << alumno.getId() << std::endl;
-            std::cout << "Nombre: " << alumno.getNombre() << std::endl;
-            std::cout << "Apellido: " << alumno.getApellido() << std::endl;
-            std::cout << "Carrera: " << alumno.getCarrera() << std::endl;
-            std::cout << "Fecha de Ingreso: " << alumno.getIngreso() << std::endl;
+            std::cout << "Id: " << alumno -> getId() << std::endl;
+            std::cout << "Nombre: " << alumno -> getNombre() << std::endl;
+            std::cout << "Apellido: " << alumno -> getApellido() << std::endl;
+            std::cout << "Carrera: " << alumno -> getCarrera() << std::endl;
+            std::cout << "Fecha de Ingreso: " << alumno -> getIngreso() << std::endl;
             
             return;
         }
@@ -55,14 +55,14 @@ void ListaAlumno::buscar(std::string nombre) {
      bool encontrado = false;
 
     while(aux != nullptr) {
-        if (aux -> getAlumno().getNombre() == nombre) {
-            Alumno alumno = aux -> getAlumno();
+        if (aux -> getAlumno() -> getNombre() == nombre) {
+            Alumno* alumno = aux -> getAlumno();
 
-            std::cout << "Id: " << alumno.getId() << std::endl;
-            std::cout << "Nombre: " << alumno.getNombre() << std::endl;
-            std::cout << "Apellido: " << alumno.getApellido() << std::endl;
-            std::cout << "Carrera: " << alumno.getCarrera() << std::endl;
-            std::cout << "Fecha de Ingreso: " << alumno.getIngreso() << std::endl;
+            std::cout << "Id: " << alumno -> getId() << std::endl;
+            std::cout << "Nombre: " << alumno -> getNombre() << std::endl;
+            std::cout << "Apellido: " << alumno -> getApellido() << std::endl;
+            std::cout << "Carrera: " << alumno -> getCarrera() << std::endl;
+            std::cout << "Fecha de Ingreso: " << alumno -> getIngreso() << std::endl;
             
             std::cout << "=========================================" << std::endl;
             
@@ -86,8 +86,10 @@ void ListaAlumno::eliminar(int id) {
 
     NodoAlumno* aux = head;
 
-    if (aux -> getAlumno().getId() == id) {
+    if (aux -> getAlumno() -> getId() == id) {
+
         head = head -> getSig();
+
         delete aux;
 
         std::cout << "Alumno eliminado con éxito" << std::endl;
@@ -97,7 +99,7 @@ void ListaAlumno::eliminar(int id) {
 
     NodoAlumno* aux2 = head -> getSig();
 
-    while (aux2 != nullptr && aux2 -> getAlumno().getId() != id) {
+    while (aux2 != nullptr && aux2 -> getAlumno() -> getId() != id) {
         aux = aux -> getSig();
         aux2 = aux2 -> getSig();
     }
@@ -122,7 +124,7 @@ void ListaAlumno::ver() {
     NodoAlumno* aux = head;
 
     while (aux != nullptr) {
-        std::cout << aux -> getAlumno().getNombre() << " -> ";
+        std::cout << aux -> getAlumno() -> getNombre() << " -> ";
         aux = aux -> getSig();
     }
 

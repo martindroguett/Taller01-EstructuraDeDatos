@@ -1,8 +1,12 @@
 #include "NodoAlumno.h"
 #include <string>
 
-NodoAlumno::NodoAlumno(Alumno alumno) {
-    this -> alumno = alumno;
+NodoAlumno::~NodoAlumno() {
+    delete this -> getAlumno();
+}
+
+NodoAlumno::NodoAlumno(Alumno& alumno) {
+    this -> alumno = &alumno;
     this -> sig = nullptr; 
 }
 
@@ -14,6 +18,6 @@ void NodoAlumno::setSig(NodoAlumno* nuevo) {
     this -> sig = nuevo;
 }
 
-Alumno& NodoAlumno::getAlumno() {
+Alumno* NodoAlumno::getAlumno() {
     return alumno;
 }

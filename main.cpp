@@ -30,9 +30,9 @@ void registrarAlumno() {
     cout << "Ingrese fecha de ingreso del alumno: ";
     cin >> fechaIngreso;
 
-    Alumno alumno = Alumno(id, nombre, apellido, carrera, fechaIngreso);
+    Alumno* alumno = new Alumno(id, nombre, apellido, carrera, fechaIngreso);
 
-    lista.insertar(alumno);
+    lista.insertar(*alumno);
          
     cout << "¡Alumno registrado con éxito!" << endl;
 

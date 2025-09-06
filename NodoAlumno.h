@@ -4,14 +4,14 @@
 
 class NodoAlumno {
     private:
-        Alumno alumno;
+        Alumno* alumno;
         NodoAlumno* sig;
 
     public:
-        NodoAlumno(Alumno alumno);
+        NodoAlumno(Alumno& alumno);
 
         NodoAlumno* getSig();
-        Alumno& getAlumno();
+        Alumno* getAlumno();
         void setSig(NodoAlumno* nuevo);
         ~NodoAlumno();
     
