@@ -28,26 +28,19 @@ void ListaCurso::insertar(Curso& curso) {
 
 }
 
-void ListaCurso::buscar(int id) {
+Curso* ListaCurso::buscar(int id) {
     NodoCurso* aux = head;
 
     while(aux != nullptr) {
         if (aux -> getCurso() -> getId() == id) {
             Curso* curso = aux -> getCurso();
-
-            std::cout << "Id: " << curso -> getId() << std::endl;
-            std::cout << "Nombre: " << curso -> getNombre() << std::endl;
-            std::cout << "Máximo de estudiantes: " << curso -> getMaxEst() << std::endl;
-            std::cout << "Carrera: " << curso -> getCarrera() << std::endl;
-            std::cout << "Profesor: " << curso -> getProfesor() << std::endl;
             
-            return;
+            return aux -> getCurso();
         }
 
         aux = aux -> getSig();
     }
-
-    std::cout << "No hay ningún curso con la id " << id << std::endl;
+    return nullptr;
 }
 
 void ListaCurso::buscar(std::string nombre) {

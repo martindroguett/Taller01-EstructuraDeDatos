@@ -28,26 +28,20 @@ void ListaAlumno::insertar(Alumno& alumno) {
 
 }
 
-void ListaAlumno::buscar(int id) {
+Alumno* ListaAlumno::buscar(int id) {
     NodoAlumno* aux = head;
 
     while(aux != nullptr) {
         if (aux -> getAlumno() -> getId() == id) {
             Alumno* alumno = aux -> getAlumno();
 
-            std::cout << "Id: " << alumno -> getId() << std::endl;
-            std::cout << "Nombre: " << alumno -> getNombre() << std::endl;
-            std::cout << "Apellido: " << alumno -> getApellido() << std::endl;
-            std::cout << "Carrera: " << alumno -> getCarrera() << std::endl;
-            std::cout << "Fecha de Ingreso: " << alumno -> getIngreso() << std::endl;
-            
-            return;
+            return alumno;
         }
 
         aux = aux -> getSig();
     }
 
-    std::cout << "No hay ningún alumno con la id " << id << std::endl;
+    return nullptr;
 }
 
 void ListaAlumno::buscar(std::string nombre) {

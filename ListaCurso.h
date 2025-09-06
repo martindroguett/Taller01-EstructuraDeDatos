@@ -11,7 +11,7 @@ class ListaCurso {
         ~ListaCurso();
 
         void insertar(Curso& curso);
-        void buscar(int id);
+        Curso* buscar(int id);
         void buscar(std::string nombre);
         void eliminar(int id);
         void ver();

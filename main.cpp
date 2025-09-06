@@ -44,16 +44,25 @@ void registrarAlumno() {
 
 //Listo - falta control error
 void buscarAlumno() {
-    string opcion;
+    string dato;
 
     cout << "Ingrese dato de búsqueda: " << endl;
-    cin >> opcion;
+    cin >> dato;
 
     try { 
-        listaA.buscar(stoi(opcion));
+        Alumno* alumno = listaA.buscar(stoi(dato));
 
+        if (alumno != nullptr) {
+            cout << "Id: " << alumno -> getId() << endl;
+            cout << "Nombre: " << alumno -> getNombre() << endl;
+            cout << "Apellido: " << alumno -> getApellido() << endl;
+            cout << "Carrera: " << alumno -> getCarrera() << endl;
+            cout << "Fecha de Ingreso: " << alumno -> getIngreso() << endl;
+        } else {
+            cout << "No hay ningún alumno con la id " << dato << endl;
+        }
     } catch (exception& e) {
-        listaA.buscar(opcion);
+        listaA.buscar(dato);
     }
     
     cout << endl;
@@ -137,16 +146,26 @@ void registrarCurso() {
 
 //Listo - falta control error
 void buscarCurso() {
-    string opcion;
+    string dato;
 
     cout << "Ingrese dato de búsqueda: " << endl;
-    cin >> opcion;
+    cin >> dato;
 
     try { 
-        listaC.buscar(stoi(opcion));
+        Curso* curso = listaC.buscar(stoi(dato));
+
+        if (curso != nullptr) {
+            cout << "Id: " << curso -> getId() << endl;
+            cout << "Nombre: " << curso -> getNombre() << endl;
+            cout << "Máximo de estudiantes: " << curso -> getMaxEst() << endl;
+            cout << "Carrera: " << curso -> getCarrera() << endl;
+            cout << "Profesor: " << curso -> getProfesor() << endl;
+        } else {
+            cout << "No hay ningún curso con la id " << dato << endl;
+        }
 
     } catch (exception& e) {
-        listaC.buscar(opcion);
+        listaC.buscar(dato);
     }
 
     cout << endl;
