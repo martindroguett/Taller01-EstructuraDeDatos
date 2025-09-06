@@ -128,5 +128,5 @@ void ListaAlumno::ver() {
         aux = aux -> getSig();
     }
 
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
 }
