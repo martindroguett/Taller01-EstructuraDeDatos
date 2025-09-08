@@ -78,7 +78,7 @@ void eliminarAlumno() {
 
     while (!valido) {
         try {
-            listaA.eliminar(stoi(id));
+            listaA.eliminar(stoi(id), true);
             valido = true;
 
         } catch (exception& e) {
@@ -110,7 +110,7 @@ void gestionAlumno() {
         else if (opcion != 4) { cout << "Ese número no está dentro de las opciones" << endl; }
     }
 
-    cout << "¡Saliendo de la gestión de alumnos!" << endl;
+    cout << "¡Saliendo de la gestión de alumnos!" << endl << endl;
 
 }
 
@@ -181,7 +181,7 @@ void eliminarCurso() {
 
     while (!valido) {
         try {
-            listaC.eliminar(stoi(id));
+            listaC.eliminar(stoi(id), true);
             valido = true;
 
         } catch (exception& e) {
@@ -213,20 +213,140 @@ void gestionCurso() {
         else if (opcion != 4) { cout << "Ese número no está dentro de las opciones" << endl; }
     }
 
-    cout << "¡Saliendo de la gestión de cursos!" << endl;
+    cout << "¡Saliendo de la gestión de cursos!" << endl << endl;
 
 }
 
-void inscripcion() {
+void inscribir() {
+    int idA = 0;
+    int idC = 0;
 
-}  
+    cout << "Ingrese id del alumno: ";
+    cin >> idA;
+
+    Alumno* alumno = listaA.buscar(idA);
+
+    if (alumno == nullptr) {
+        cout << "No hay ningún alumno con la id " << idA << endl;
+        return; 
+    }
+
+    cout << "Ingrese id del curso: ";
+    cin >> idC;
+
+    Curso* curso = listaC.buscar(idC);
+
+    if (curso == nullptr) {
+        cout << "No hay ningún curso con la id " << idC << endl;
+        return; 
+    }
+
+    if (alumno -> getCarrera() != curso -> getCarrera()) {
+        cout << "No se puede incribir a " << alumno -> getNombre() << " en " << 
+        curso -> getNombre() << " porque no son de la misma carrera." << endl;
+
+        return;
+    }
+
+    curso -> inscribir(alumno);
+    cout << endl;
+
+}
+
+void desinscribir() {
+    int idA = 0;
+    int idC = 0;
+
+    cout << "Ingrese id del alumno: ";
+    cin >> idA;
+
+    Alumno* alumno = listaA.buscar(idA);
+
+    if (alumno == nullptr) {
+        cout << "No hay ningún alumno con la id " << idA << endl;
+        return; 
+    }
+
+    cout << "Ingrese id del curso: ";
+    cin >> idC;
+
+    Curso* curso = listaC.buscar(idC);
+
+    if (curso == nullptr) {
+        cout << "No hay ningún curso con la id " << idC << endl;
+        return; 
+    }
+
+    if (alumno -> cursando(curso)) {
+        curso -> eliminar(alumno);
+    }
+
+    cout << endl;
+
+}
+
+void gestionInscripcion() {
+    int opcion = 0;
+
+    while (opcion != 3) {
+        cout << "=== Menú de inscripciones ===" << endl;
+        cout << "¿Qué desea hacer?" << endl;
+        cout << "1) Inscribir un alumno a un curso" << endl;
+        cout << "2) Eliminar un alumno de un curso" << endl;
+        cout << "3) Salir" << endl;
+        cout << "> ";
+
+        cin >> opcion;
+        cout << endl;
+
+        if (opcion == 1) { inscribir(); }
+        else if (opcion == 2) { desinscribir(); }
+        else if (opcion != 3) { cout << "Ese número no está dentro de las opciones" << endl; }
+    }
+}
 
 void gestionNotas() {
 
 }
 
-void reportes() {
+void todosCurso() {
+    int idA = 0;
 
+    cout << "Ingrese id del alumno: ";
+    cin >> idA;
+
+    Alumno* alumno = listaA.buscar(idA);
+
+    if (alumno == nullptr) {
+        cout << "No hay ningún alumno con la id " << idA << endl;
+        return; 
+    }
+
+    alumno -> getCursos();
+
+}
+
+void reportes() {
+    int opcion = 0;
+
+    while (opcion != 5) {
+        cout << "=== Reportes ===" << endl;
+        cout << "¿Qué desea hacer?" << endl;
+        cout << "1) Obtener todos los alumnos de una carrera" << endl;
+        cout << "2) Obtener todos los cursos de un alumno" << endl;
+        cout << "3) Calcular promedio de notas de un alumno" << endl;
+        cout << "4) Calcular promedio general de un alumno" << endl;
+        cout << "5) Salir" << endl;
+        cout << "> ";
+        cin >> opcion;
+        cout << endl;
+
+        if (opcion == 1) { /*todosCarrera(); */}
+        else if (opcion == 2) { todosCurso(); }
+        else if (opcion == 3) { gestionInscripcion(); }
+        else if (opcion == 4) { gestionNotas(); }
+        else if (opcion != 5) { cout << "Ese número no está dentro de las opciones" << endl; }
+    }
 }
 
 int main() {
@@ -248,7 +368,7 @@ int main() {
 
         if (opcion == 1) { gestionAlumno(); }
         else if (opcion == 2) { gestionCurso(); }
-        else if (opcion == 3) { inscripcion(); }
+        else if (opcion == 3) { gestionInscripcion(); }
         else if (opcion == 4) { gestionNotas(); }
         else if (opcion == 5) { reportes(); }
         else if (opcion != 6) { cout << "Ese número no está dentro de las opciones" << endl; }

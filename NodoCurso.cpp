@@ -1,8 +1,9 @@
 #include "NodoCurso.h"
+#include "Curso.h"
 #include <string>
 
 NodoCurso::~NodoCurso() {
-    delete this -> getCurso();
+    
 }
 
 NodoCurso::NodoCurso(Curso& curso) {

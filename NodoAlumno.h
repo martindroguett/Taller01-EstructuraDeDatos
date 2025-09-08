@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include "Alumno.h"
+
+class Alumno;
 
 class NodoAlumno {
     private:

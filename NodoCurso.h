@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include "Curso.h"
+
+class Curso;
 
 class NodoCurso {
     private:

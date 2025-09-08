@@ -1,8 +1,9 @@
 #include "NodoAlumno.h"
+#include "Alumno.h"
 #include <string>
 
 NodoAlumno::~NodoAlumno() {
-    delete this -> getAlumno();
+    
 }
 
 NodoAlumno::NodoAlumno(Alumno& alumno) {

@@ -13,7 +13,7 @@ class ListaCurso {
         void insertar(Curso& curso);
         Curso* buscar(int id);
         void buscar(std::string nombre);
-        void eliminar(int id);
+        void eliminar(int id, bool eliminar);
         void ver();
 
 };

@@ -1,4 +1,5 @@
 #include "ListaAlumno.h"
+#include "Alumno.h"
 #include <iostream>
 #include <string>
 
@@ -72,7 +73,7 @@ void ListaAlumno::buscar(std::string nombre) {
 
 }
 
-void ListaAlumno::eliminar(int id) {
+void ListaAlumno::eliminar(int id, bool eliminar) {
     if (head == nullptr) {
         std::cout << "No hay nada que eliminar" << std::endl;
         return;
@@ -83,6 +84,10 @@ void ListaAlumno::eliminar(int id) {
     if (aux -> getAlumno() -> getId() == id) {
 
         head = head -> getSig();
+
+        if (eliminar) {
+            delete aux -> getAlumno();
+        }
 
         delete aux;
 
@@ -104,6 +109,10 @@ void ListaAlumno::eliminar(int id) {
     }
 
     aux -> setSig(aux2 -> getSig());
+
+    if (eliminar) {
+        delete aux2 -> getAlumno();
+    }
     delete aux2;
 
     std::cout << "Alumno eliminado con éxito" << std::endl;

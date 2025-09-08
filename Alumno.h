@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "ListaCurso.h"
 
 class Alumno {
     private: 
@@ -8,6 +9,8 @@ class Alumno {
         std::string apellido;
         std::string carrera;
         std::string fechaIngreso;
+
+        ListaCurso listaC;
 
     public:
         Alumno();
@@ -19,6 +22,12 @@ class Alumno {
         std::string getApellido();
         std::string getCarrera();
         std::string getIngreso();
+
+        void inscribir(Curso* curso);
+        bool cursando(Curso* curso);
+        void eliminar(Curso* curso);
+
+        void getCursos();
 
         ~Alumno();
 };
