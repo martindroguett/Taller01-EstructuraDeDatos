@@ -8,7 +8,12 @@ ListaCurso::ListaCurso() {
 }
 
 ListaCurso::~ListaCurso() {
-
+    NodoCurso* aux = head;
+    while (aux != nullptr) {
+        NodoCurso* aux2 = aux;
+        aux = aux -> getSig();
+        delete aux2;
+    }
 }
 
 void ListaCurso::insertar(Curso& curso) {
@@ -114,6 +119,22 @@ void ListaCurso::eliminar(int id, bool eliminar) {
     delete aux2;
 
     std::cout << "Curso eliminado con éxito" << std::endl;
+}
+
+void ListaCurso::verNotas() {
+    if (head == nullptr) {
+        std::cout << "No hay nada que mostrar" << std::endl;
+        return;
+    }
+
+    NodoCurso* aux = head;
+
+    while (aux != nullptr) {
+        aux -> getCurso() -> verNotas();
+        aux = aux -> getSig();
+    }
+
+    std::cout << std::endl << std::endl;
 }
 
 void ListaCurso::ver() {

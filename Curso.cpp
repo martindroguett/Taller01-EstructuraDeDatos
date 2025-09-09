@@ -4,7 +4,6 @@
 #include <iostream>
 
 Curso::~Curso() {
-    
 }
 
 Curso::Curso() {
@@ -22,6 +21,8 @@ Curso::Curso(int id, std::string nombre, int maxEst, std::string carrera,
 
     this -> inscritos = 0;
     this -> listaA = ListaAlumno();
+    
+    this -> listaN = ListaNota();
 }
 
 int Curso::getId(){ return id; }
@@ -48,8 +49,16 @@ void Curso::inscribir(Alumno* alumno) {
 }
 
 void Curso::eliminar(Alumno* alumno) {
-    Alumno copia = *alumno; 
-    this -> listaA.eliminar(copia.getId(), true);
+    this -> listaA.eliminar(alumno -> getId(), true);
     alumno -> eliminar(this);
     inscritos--;
+}
+
+void Curso::subirNota(double nota) {
+    listaN.insertar(nota);
+
+}
+
+void Curso::verNotas() {
+    listaN.ver();
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "ListaAlumno.h"
+#include "ListaNota.h"
 
 class Curso {
     private:
@@ -13,6 +14,8 @@ class Curso {
         int inscritos;
 
         ListaAlumno listaA;
+
+        ListaNota listaN;
 
     public:
         Curso();
@@ -27,6 +30,9 @@ class Curso {
 
         void inscribir(Alumno* alumno);
         void eliminar(Alumno* alumno);
+
+        void subirNota(double nota);
+        void verNotas();
 
         ~Curso();
 };

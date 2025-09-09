@@ -14,6 +14,7 @@ class ListaCurso {
         Curso* buscar(int id);
         void buscar(std::string nombre);
         void eliminar(int id, bool eliminar);
+        void verNotas();
         void ver();
 
 };

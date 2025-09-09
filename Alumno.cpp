@@ -44,9 +44,17 @@ bool Alumno::cursando(Curso* curso) {
 }
 
 void Alumno::eliminar(Curso* curso) {
-    Curso copia = *curso; 
 
-    this -> listaC.eliminar(copia.getId(), true);
+    this -> listaC.eliminar(curso -> getId(), true);
+}
+
+void Alumno::subirNota(int id, double nota) {
+    Curso* curso = listaC.buscar(id);
+    curso -> subirNota(nota);
+}
+
+void Alumno::verNotas() {
+    listaC.verNotas();
 }
 
 void Alumno::getCursos() {

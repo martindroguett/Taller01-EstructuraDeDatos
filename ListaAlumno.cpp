@@ -8,7 +8,12 @@ ListaAlumno::ListaAlumno() {
 }
 
 ListaAlumno::~ListaAlumno() {
-
+    NodoAlumno* aux = head;
+    while (aux != nullptr) {
+        NodoAlumno* aux2 = aux;
+        aux = aux -> getSig();
+        delete aux2;
+    }
 }
 
 void ListaAlumno::insertar(Alumno& alumno) {

@@ -306,6 +306,41 @@ void gestionInscripcion() {
 }
 
 void gestionNotas() {
+    cout << "=== Agregar notas ===" << endl;
+    int idA = 0;
+    int idC = 0;
+
+    cout << "Ingrese id del alumno: ";
+    cin >> idA;
+
+    Alumno* alumno = listaA.buscar(idA);
+
+    if (alumno == nullptr) {
+        cout << "No hay ningún alumno con la id " << idA << endl;
+        return; 
+    }
+
+    cout << "Ingrese id del curso: ";
+    cin >> idC;
+
+    Curso* curso = listaC.buscar(idC);
+
+    if (curso == nullptr) {
+        cout << "No hay ningún curso con la id " << idC << endl;
+        return; 
+    }
+
+    if (alumno -> cursando(curso)) {
+        
+        double nota = 0;
+        cout << "Ingrese nota: ";
+        cin >> nota;
+
+        alumno -> subirNota(curso -> getId(), nota);
+
+        cout << "NOTAS: " << endl;
+        alumno -> verNotas();
+    }
 
 }
 

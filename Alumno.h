@@ -27,6 +27,9 @@ class Alumno {
         bool cursando(Curso* curso);
         void eliminar(Curso* curso);
 
+        void subirNota(int id, double nota);
+        void verNotas();
+
         void getCursos();
 
         ~Alumno();
