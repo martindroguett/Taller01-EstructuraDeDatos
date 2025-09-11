@@ -11,6 +11,7 @@ using namespace std;
 ListaAlumno listaA = ListaAlumno();
 ListaCurso listaC = ListaCurso();
 
+//Listo
 int controlErrorInt() {
     string s;
     cout << "> ";
@@ -23,44 +24,78 @@ int controlErrorInt() {
     }
 }
 
-//Listo - falta control error
-void registrarAlumno() {
-    int id = 0;
-    string nombre;
-    string apellido;
-    string carrera;
-    string fechaIngreso;
-
-    while (id <= 0) {
-        cout << "Enter student's ID (int > 0) ";
-        id = controlErrorInt();
-
-        if (id <= 0) {
-            cout << "- The id must be a positive integer" << endl << endl;
+//Listo
+string controlErrorString() {
+    string s;
+    cout << "> ";
+    cin >> s;
+    for (char c: s) {
+        if (!isalpha(c)) {
+            cout << "- Only english alphabet letters are allowed!" << endl;
+            return "";
         }
     }
 
-    cout << "Ingrese nombre del alumno: ";
-    cin >> nombre;
-     
-    cout << "Ingrese apellido del alumno: ";
-    cin >> apellido;
+    return s;
+}
 
-    cout << "Ingrese carrera del alumno: ";
-    cin >> carrera;
+//Listo
+double controlErrorDouble() {
+    string s;
+    cout << "> ";
+    cin >> s;
+    try {
+        return stod(s);
+    } catch (exception e) {
+        cout << "ERROR" << endl;
+        return 0;
+    }
+}
 
-    cout << "Ingrese fecha de ingreso del alumno: ";
+//Revisar id repetida
+void registrarAlumno() {
+    int id = 0;
+    string nombre = "";
+    string apellido = "";
+    string carrera = "";
+    string fechaIngreso = "";
+
+    while (id <= 0) {
+        cout << "Enter student's ID (int > 0)" << endl;
+        id = controlErrorInt();
+
+        if (id <= 0) {
+            cout << "- The id must be a positive integer" << endl;
+        }
+    }
+
+    while (nombre == "") {
+        cout << "Enter student's name" << endl;
+        nombre = controlErrorString();
+    }
+
+    while (apellido == "") {
+        cout << "Enter student's last name" << endl;
+        apellido = controlErrorString();
+    }
+
+    while (carrera == "") { 
+        cout << "Enter student's major" << endl;
+        carrera = controlErrorString();
+    }
+
+    cout << "Enter student's enrollment date" << endl;
     cin >> fechaIngreso;
 
     Alumno* alumno = new Alumno(id, nombre, apellido, carrera, fechaIngreso);
 
     listaA.insertar(*alumno);
          
-    cout << "¡Alumno registrado con éxito!" << endl << endl;
+    cout << "Student registered successfully!" << endl << endl;
 
 }
 
-//Listo - falta control error
+//Listo 
 void buscarAlumno() {
     string dato;
 
@@ -104,6 +139,7 @@ void eliminarAlumno() {
     cout << endl;
 }
 
+//Listo
 void gestionAlumno() {
     int opcion = 0;
 
@@ -128,43 +164,55 @@ void gestionAlumno() {
 
 }
 
-//Listo - falta control error - revisar id repetida!
+//revisar id repetida!
 void registrarCurso() {
     int id = 0;
-    string nombre;
+    string nombre = "";
     int maxEst;
-    string carrera;
-    string profesor;
+    string carrera = "";
+    string profesor = "";
 
     while (id <= 0) {
-        cout << "Enter course's ID (int > 0) ";
+        cout << "Enter course's ID (int > 0)" << endl;
         id = controlErrorInt();
 
         if (id <= 0) {
-            cout << "- The id must be a positive integer" << endl << endl;
+            cout << "- The id must be a positive integer" << endl;
         }
     }
 
-    cout << "Ingrese nombre del curso: ";
-    cin >> nombre;
+    while (nombre == "") {
+        cout << "Enter course's name" << endl;
+        nombre = controlErrorString();
+    }
      
-    cout << "Ingrese capacidad máxima de estudiantes del curso: ";
-    cin >> maxEst;
+    while (id <= 0) {
+        cout << "Enter course's maximum capacity" << endl;
+        id = controlErrorInt();
 
-    cout << "Ingrese carrera del curso: ";
-    cin >> carrera;
+        if (id <= 0) {
+            cout << "- The maximum capacity must be a positive integer" << endl;
+        }
+    }
 
-    cout << "Ingrese profesor que dicta el curso: ";
-    cin >> profesor;
+    while (carrera == "") { 
+        cout << "Enter course's major" << endl;
+        carrera = controlErrorString();
+    }
+
+    while (profesor == "") {
+        cout << "Enter course's professor" << endl;
+        profesor = controlErrorString();
+    }
 
     Curso* curso = new Curso(id, nombre, maxEst, carrera, profesor);
 
     listaC.insertar(*curso);
          
-    cout << "¡Curso registrado con éxito!" << endl << endl;
+    cout << "Course registered successfully!" << endl << endl;
 }
 
-//Listo - falta control error
+//Listo
 void buscarCurso() {
     string dato;
 
@@ -192,7 +240,7 @@ void buscarCurso() {
     cout << endl;
 }
 
-//falta control error - eliminar registro de notas e historial de cursos
+//eliminar registro de notas e historial de cursos
 void eliminarCurso() {
     int id = 0;
 
@@ -209,6 +257,7 @@ void eliminarCurso() {
     cout << endl;
 }
 
+//Listo
 void gestionCurso() {
     int opcion = 0;
 
@@ -233,6 +282,7 @@ void gestionCurso() {
 
 }
 
+//Listo
 void inscribir() {
     int idA = 0;
 
@@ -277,11 +327,12 @@ void inscribir() {
         return;
     }
 
-    curso -> inscribir(alumno); //Max capacity?
+    curso -> inscribir(alumno); 
     cout << endl;
 
 }
 
+//Listo
 void desinscribir() {
     int idA = 0;
 
@@ -327,6 +378,7 @@ void desinscribir() {
 
 }
 
+//Listo
 void gestionInscripcion() {
     int opcion = 0;
 
@@ -345,6 +397,7 @@ void gestionInscripcion() {
     }
 }
 
+//Listo
 void gestionNotas() {
     cout << "=== Grades Management ===" << endl;
     int idA = 0;
@@ -386,8 +439,15 @@ void gestionNotas() {
     if (alumno -> cursando(curso)) {
         
         double nota = 0;
-        cout << "Enter grade";
-        cin >> nota;
+
+        while (nota < 1 || nota > 7) {
+            cout << "Enter grade" << endl;
+            nota = controlErrorDouble();
+
+            if (nota < 1 || nota > 7) {
+                cout << "- Enter a valid grade between (1.0 and 7.0)" << endl;
+            }
+        }
 
         alumno -> subirNota(curso -> getId(), nota);
 
@@ -397,17 +457,21 @@ void gestionNotas() {
 
 }
 
+//Listo
 void todosCarrera() {
-    string carrera;
+    string carrera = "";
 
-    cout << "Ingrese carrera: " << endl;
-    cin >> carrera;
+    while (carrera == "") {
+        cout << "Enter major" << endl;
+        carrera = controlErrorString();
+    }
 
     listaA.buscarPorCarrera(carrera);
 
     cout << endl;
 }
 
+//Listo
 void todosCurso() {
     int idA = 0;
 
@@ -424,13 +488,14 @@ void todosCurso() {
     alumno -> getCursos();
 }
 
+//Listo
 void promedioNotas() {
     cout << "=== Grades Average ===" << endl;
     int idA = 0;
 
     while (idA <= 0) { 
         cout << "Enter student's ID" << endl;
-        cin >> idA;
+        idA = controlErrorInt();
 
         if (idA == 0) {
             cout << "- The id must be a positive integer" << endl;
@@ -468,8 +533,9 @@ void promedioNotas() {
     }
 }
 
+//Listo
 void promedioGeneral() {
-    cout << "=== General Grades Average ===" << endl;
+    cout << "=== Overall Grades Average ===" << endl;
     int idA = 0;
 
     while (idA <= 0) {
@@ -491,6 +557,7 @@ void promedioGeneral() {
     alumno -> getPromedio(0);
 }
 
+//Listo
 void reportes() {
     int opcion = 0;
 
@@ -500,7 +567,7 @@ void reportes() {
         cout << "1) See all students enrolled in a major" << endl;
         cout << "2) See all courses enrolled by a student" << endl;
         cout << "3) Calculate the grades average of a student" << endl;
-        cout << "4) Calculate the general grade average of a student" << endl;
+        cout << "4) Calculate the overall grade average of a student" << endl;
         cout << "5) Return" << endl;
         cout << "> ";
         opcion = controlErrorInt();
@@ -514,6 +581,7 @@ void reportes() {
     }
 }
 
+//Listo
 int main() {
     int opcion = 0;
 

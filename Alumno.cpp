@@ -27,40 +27,47 @@ std::string Alumno::getApellido() { return apellido; }
 std::string Alumno::getCarrera() { return carrera; } 
 std::string Alumno::getIngreso() { return fechaIngreso; } 
 
+//Listo
 void Alumno::inscribir(Curso* curso) {
     Curso* copia = new Curso(*curso); 
     this -> listaC.insertar(*copia);
 }
 
+//Listo
 bool Alumno::cursando(Curso* curso) {
     if (listaC.buscar(curso -> getId()) != nullptr) {
         return true;
     } 
     
-    std::cout << this -> getNombre() << this -> getApellido() << " no está cursando " 
+    std::cout << this -> getNombre() << this -> getApellido() << " is not enrolled in the course " 
     << curso -> getNombre() << std::endl;
 
     return false;
 }
 
+//Listo
 void Alumno::eliminar(Curso* curso) {
 
     this -> listaC.eliminar(curso -> getId(), true);
 }
 
+//Listo
 void Alumno::subirNota(int id, double nota) {
     Curso* curso = listaC.buscar(id);
     curso -> subirNota(nota);
 }
 
+//Listo
 void Alumno::verNotas() {
     listaC.verNotas();
 }
 
+//Listo
 void Alumno::getCursos() {
     listaC.ver();
 }
 
+//Listo
 void Alumno::getPromedio(int id) {
     if (id == 0) {
         NodoCurso* aux = listaC.getHead();
@@ -76,7 +83,7 @@ void Alumno::getPromedio(int id) {
             aux = aux -> getSig();
         }
 
-        std::cout << "El promedio general de " << this -> getNombre() << " es: " << 
+        std::cout << "The overall average of " << this -> getNombre() << " is: " << 
         (sum / count) << std::endl;
 
         return;
@@ -84,8 +91,8 @@ void Alumno::getPromedio(int id) {
     
     Curso* curso = listaC.buscar(id);
 
-    std::cout << "El promedio de " << this -> getNombre() << " en " << curso -> getNombre() 
-    << " es: " << curso -> getPromedio() << std::endl;
+    std::cout << "The average of " << this -> getNombre() << " in " << curso -> getNombre() 
+    << " is: " << curso -> getPromedio() << std::endl;
 
     return;
 }

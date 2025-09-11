@@ -16,6 +16,7 @@ ListaCurso::~ListaCurso() {
     }
 }
 
+//Listo
 void ListaCurso::insertar(Curso& curso) {
     NodoCurso* newNodo = new NodoCurso(curso);
 
@@ -34,6 +35,7 @@ void ListaCurso::insertar(Curso& curso) {
 
 }
 
+//Listo
 Curso* ListaCurso::buscar(int id) {
     NodoCurso* aux = head;
 
@@ -49,6 +51,7 @@ Curso* ListaCurso::buscar(int id) {
     return nullptr;
 }
 
+//Listo
 void ListaCurso::buscar(std::string nombre) {
      NodoCurso* aux = head;
      bool encontrado = false;
@@ -57,11 +60,11 @@ void ListaCurso::buscar(std::string nombre) {
         if (aux -> getCurso() -> getNombre() == nombre) {
             Curso* curso = aux -> getCurso();
 
-            std::cout << "Id: " << curso -> getId() << std::endl;
-            std::cout << "Nombre: " << curso -> getNombre() << std::endl;
-            std::cout << "Máximo de estudiantes: " << curso -> getMaxEst() << std::endl;
-            std::cout << "Carrera: " << curso -> getCarrera() << std::endl;
-            std::cout << "Profesor: " << curso -> getProfesor() << std::endl;
+            std::cout << "ID: " << curso -> getId() << std::endl;
+            std::cout << "Name: " << curso -> getNombre() << std::endl;
+            std::cout << "Maximum capacity: " << curso -> getMaxEst() << std::endl;
+            std::cout << "Major: " << curso -> getCarrera() << std::endl;
+            std::cout << "Professor: " << curso -> getProfesor() << std::endl;
             
             std::cout << "=========================================" << std::endl;
             
@@ -72,14 +75,15 @@ void ListaCurso::buscar(std::string nombre) {
     }
 
     if (!encontrado) {
-        std::cout << "No hay ningún curso con el nombre " << nombre << std::endl;
+        std::cout << "There's no course named " << nombre << std::endl;
     }
 
 }
 
+//Listo
 void ListaCurso::eliminar(int id, bool eliminar) {
     if (head == nullptr) {
-        std::cout << "No hay nada que eliminar" << std::endl;
+        std::cout << "There's no course to delete" << std::endl;
         return;
     }
 
@@ -94,7 +98,7 @@ void ListaCurso::eliminar(int id, bool eliminar) {
         }
         delete aux;
 
-        std::cout << "Curso eliminado con éxito" << std::endl;
+        std::cout << "Course deleted successfully" << std::endl;
 
         return;
     }
@@ -107,7 +111,7 @@ void ListaCurso::eliminar(int id, bool eliminar) {
     }
     
     if (aux2 == nullptr) {
-        std::cout << "No existe un curso con la id " << id << std::endl;
+        std::cout << "There's no course with the ID " << id << std::endl;
         return;
     }
 
@@ -118,12 +122,13 @@ void ListaCurso::eliminar(int id, bool eliminar) {
     }
     delete aux2;
 
-    std::cout << "Curso eliminado con éxito" << std::endl;
+    std::cout << "Course deleted successfully" << std::endl;
 }
 
+//Listo
 void ListaCurso::verNotas() {
     if (head == nullptr) {
-        std::cout << "No hay nada que mostrar" << std::endl;
+        std::cout << "There's nothing to see here!" << std::endl;
         return;
     }
 
@@ -137,9 +142,10 @@ void ListaCurso::verNotas() {
     std::cout << std::endl;
 }
 
+//Listo
 void ListaCurso::ver() {
     if (head == nullptr) {
-        std::cout << "No hay nada que mostrar" << std::endl;
+        std::cout << "There's nothing to see here!" << std::endl;
         return;
     }
 
@@ -153,6 +159,7 @@ void ListaCurso::ver() {
     std::cout << std::endl << std::endl;
 }
 
+//Listo
 NodoCurso* ListaCurso::getHead() {
     return this -> head;
 }

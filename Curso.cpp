@@ -31,10 +31,11 @@ int Curso::getMaxEst(){ return maxEst; }
 std::string Curso::getCarrera(){ return carrera; }
 std::string Curso::getProfesor(){ return profesor; }
 
+//Listo
 void Curso::inscribir(Alumno* alumno) {
     
     if (this -> inscritos >= this -> maxEst) {
-        std::cout << "No se pueden agregar más alumnos a este curso" << std::endl;
+        std::cout << "This course is full!" << std::endl;
         return;
     }
 
@@ -45,28 +46,32 @@ void Curso::inscribir(Alumno* alumno) {
     inscritos++;
 
     std::cout << alumno -> getNombre() << " " << alumno -> getApellido() 
-    << " " << "fue agregado con éxito!" << std::endl;
+    << " was enrolled successfully in " << this -> nombre << "!" << std::endl;
 }
 
+//Listo
 void Curso::eliminar(Alumno* alumno) {
     this -> listaA.eliminar(alumno -> getId(), true);
     alumno -> eliminar(this);
     inscritos--;
 }
 
+//Listo
 void Curso::subirNota(double nota) {
     listaN.insertar(nota);
 
 }
 
+//Listo
 void Curso::verNotas() {
     listaN.ver();
 }
 
+//Listo
 double Curso::getPromedio() {
     NodoNota* aux = listaN.getHead();
     if (aux == nullptr) {
-        std::cout << "No hay notas en este curso aún" << std::endl;
+        std::cout << "There's no grades in this course yet!" << std::endl;
         return 0;
     }
 

@@ -3,10 +3,12 @@
 #include <iostream>
 #include <string>
 
+//Listo
 ListaAlumno::ListaAlumno() {
     head = nullptr;
 }
 
+//Listo
 ListaAlumno::~ListaAlumno() {
     NodoAlumno* aux = head;
     while (aux != nullptr) {
@@ -16,6 +18,7 @@ ListaAlumno::~ListaAlumno() {
     }
 }
 
+//Listo
 void ListaAlumno::insertar(Alumno& alumno) {
     NodoAlumno* newNodo = new NodoAlumno(alumno);
 
@@ -34,6 +37,7 @@ void ListaAlumno::insertar(Alumno& alumno) {
 
 }
 
+//Listo
 Alumno* ListaAlumno::buscar(int id) {
     NodoAlumno* aux = head;
 
@@ -50,6 +54,7 @@ Alumno* ListaAlumno::buscar(int id) {
     return nullptr;
 }
 
+//Listo
 void ListaAlumno::buscar(std::string nombre) {
      NodoAlumno* aux = head;
      bool encontrado = false;
@@ -58,11 +63,11 @@ void ListaAlumno::buscar(std::string nombre) {
         if (aux -> getAlumno() -> getNombre() == nombre) {
             Alumno* alumno = aux -> getAlumno();
 
-            std::cout << "Id: " << alumno -> getId() << std::endl;
-            std::cout << "Nombre: " << alumno -> getNombre() << std::endl;
-            std::cout << "Apellido: " << alumno -> getApellido() << std::endl;
-            std::cout << "Carrera: " << alumno -> getCarrera() << std::endl;
-            std::cout << "Fecha de Ingreso: " << alumno -> getIngreso() << std::endl;
+            std::cout << "ID: " << alumno -> getId() << std::endl;
+            std::cout << "Name: " << alumno -> getNombre() << std::endl;
+            std::cout << "Last name: " << alumno -> getApellido() << std::endl;
+            std::cout << "Major: " << alumno -> getCarrera() << std::endl;
+            std::cout << "Enrollment date: " << alumno -> getIngreso() << std::endl;
             
             std::cout << "=========================================" << std::endl;
             
@@ -73,11 +78,12 @@ void ListaAlumno::buscar(std::string nombre) {
     }
 
     if (!encontrado) {
-        std::cout << "No hay ningún alumno con el nombre " << nombre << std::endl;
+        std::cout << "There's no student named " << nombre << std::endl;
     }
 
 }
 
+//Listo
 void ListaAlumno::buscarPorCarrera(std::string nombre) {
      NodoAlumno* aux = head;
      bool encontrado = false;
@@ -86,11 +92,11 @@ void ListaAlumno::buscarPorCarrera(std::string nombre) {
         if (aux -> getAlumno() -> getCarrera() == nombre) {
             Alumno* alumno = aux -> getAlumno();
 
-            std::cout << "Id: " << alumno -> getId() << std::endl;
-            std::cout << "Nombre: " << alumno -> getNombre() << std::endl;
-            std::cout << "Apellido: " << alumno -> getApellido() << std::endl;
-            std::cout << "Carrera: " << alumno -> getCarrera() << std::endl;
-            std::cout << "Fecha de Ingreso: " << alumno -> getIngreso() << std::endl;
+            std::cout << "ID: " << alumno -> getId() << std::endl;
+            std::cout << "Name: " << alumno -> getNombre() << std::endl;
+            std::cout << "Last name: " << alumno -> getApellido() << std::endl;
+            std::cout << "Major: " << alumno -> getCarrera() << std::endl;
+            std::cout << "Enrollment date: " << alumno -> getIngreso() << std::endl;
             
             std::cout << "=========================================" << std::endl;
             
@@ -101,11 +107,12 @@ void ListaAlumno::buscarPorCarrera(std::string nombre) {
     }
 
     if (!encontrado) {
-        std::cout << "No hay ningún alumno en la carrera " << nombre << std::endl;
+        std::cout << "There's no student in the major " << nombre << std::endl;
     }
 
 }
 
+//Listo
 void ListaAlumno::eliminar(int id, bool eliminar) {
     if (head == nullptr) {
         std::cout << "There's no student to delete" << std::endl;
@@ -150,9 +157,10 @@ void ListaAlumno::eliminar(int id, bool eliminar) {
     std::cout << "The student deleted was succesfully!" << std::endl;
 }
 
+//Listo
 void ListaAlumno::ver() {
     if (head == nullptr) {
-        std::cout << "No hay nada que mostrar" << std::endl;
+        std::cout << "There's nothing to see here!" << std::endl;
         return;
     }
 

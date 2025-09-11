@@ -14,6 +14,7 @@ ListaNota::~ListaNota() {
     }
 }
 
+//Listo
 void ListaNota::insertar(double nota) {
     NodoNota* newNodo = new NodoNota(nota);
 
@@ -32,9 +33,10 @@ void ListaNota::insertar(double nota) {
 
 }
 
+//Listo
 void ListaNota::ver() {
     if (head == nullptr) {
-        std::cout << "No hay nada que mostrar" << std::endl;
+        std::cout << "There's nothing to see here!" << std::endl;
         return;
     }
 
@@ -48,6 +50,7 @@ void ListaNota::ver() {
     std::cout << std::endl << std::endl;
 }
 
+//Listo
 NodoNota* ListaNota::getHead() {
     return this -> head;
 }
