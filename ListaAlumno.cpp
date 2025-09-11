@@ -78,9 +78,37 @@ void ListaAlumno::buscar(std::string nombre) {
 
 }
 
+void ListaAlumno::buscarPorCarrera(std::string nombre) {
+     NodoAlumno* aux = head;
+     bool encontrado = false;
+
+    while(aux != nullptr) {
+        if (aux -> getAlumno() -> getCarrera() == nombre) {
+            Alumno* alumno = aux -> getAlumno();
+
+            std::cout << "Id: " << alumno -> getId() << std::endl;
+            std::cout << "Nombre: " << alumno -> getNombre() << std::endl;
+            std::cout << "Apellido: " << alumno -> getApellido() << std::endl;
+            std::cout << "Carrera: " << alumno -> getCarrera() << std::endl;
+            std::cout << "Fecha de Ingreso: " << alumno -> getIngreso() << std::endl;
+            
+            std::cout << "=========================================" << std::endl;
+            
+            encontrado = true;
+        }
+
+        aux = aux -> getSig();
+    }
+
+    if (!encontrado) {
+        std::cout << "No hay ningún alumno en la carrera " << nombre << std::endl;
+    }
+
+}
+
 void ListaAlumno::eliminar(int id, bool eliminar) {
     if (head == nullptr) {
-        std::cout << "No hay nada que eliminar" << std::endl;
+        std::cout << "There's no student to delete" << std::endl;
         return;
     }
 
@@ -92,11 +120,10 @@ void ListaAlumno::eliminar(int id, bool eliminar) {
 
         if (eliminar) {
             delete aux -> getAlumno();
+            std::cout << "The student was deleted succesfully!" << std::endl;
         }
 
         delete aux;
-
-        std::cout << "Alumno eliminado con éxito" << std::endl;
 
         return;
     }
@@ -109,7 +136,7 @@ void ListaAlumno::eliminar(int id, bool eliminar) {
     }
     
     if (aux2 == nullptr) {
-        std::cout << "No existe un alumno con la id " << id << std::endl;
+        std::cout << "There's no student with the ID " << id << std::endl;
         return;
     }
 
@@ -120,7 +147,7 @@ void ListaAlumno::eliminar(int id, bool eliminar) {
     }
     delete aux2;
 
-    std::cout << "Alumno eliminado con éxito" << std::endl;
+    std::cout << "The student deleted was succesfully!" << std::endl;
 }
 
 void ListaAlumno::ver() {

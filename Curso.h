@@ -33,6 +33,7 @@ class Curso {
 
         void subirNota(double nota);
         void verNotas();
+        double getPromedio();
 
         ~Curso();
 };

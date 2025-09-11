@@ -15,5 +15,6 @@ class ListaAlumno {
         void buscar(std::string nombre);
         void eliminar(int id, bool eliminar);
         void ver();
+        void buscarPorCarrera(std::string nombre);
 
 };

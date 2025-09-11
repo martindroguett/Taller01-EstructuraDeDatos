@@ -10,7 +10,7 @@ class ListaNota {
         ListaNota();
         ~ListaNota();
 
+        NodoNota* getHead();
         void insertar(double nota);
         void ver();
-
 };

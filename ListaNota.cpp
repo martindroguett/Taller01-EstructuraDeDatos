@@ -47,3 +47,7 @@ void ListaNota::ver() {
 
     std::cout << std::endl << std::endl;
 }
+
+NodoNota* ListaNota::getHead() {
+    return this -> head;
+}

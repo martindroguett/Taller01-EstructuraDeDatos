@@ -31,6 +31,7 @@ class Alumno {
         void verNotas();
 
         void getCursos();
+        void getPromedio(int id);
 
         ~Alumno();
 };

@@ -62,3 +62,24 @@ void Curso::subirNota(double nota) {
 void Curso::verNotas() {
     listaN.ver();
 }
+
+double Curso::getPromedio() {
+    NodoNota* aux = listaN.getHead();
+    if (aux == nullptr) {
+        std::cout << "No hay notas en este curso aún" << std::endl;
+        return 0;
+    }
+
+    int count = 0;
+    double sum = 0;
+
+    while (aux != nullptr) {
+        sum += aux -> getNota();
+        count++;
+
+        aux = aux -> getSig();
+    }
+
+    return (sum / count);
+
+}

@@ -134,7 +134,7 @@ void ListaCurso::verNotas() {
         aux = aux -> getSig();
     }
 
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl;
 }
 
 void ListaCurso::ver() {
@@ -151,4 +151,8 @@ void ListaCurso::ver() {
     }
 
     std::cout << std::endl << std::endl;
+}
+
+NodoCurso* ListaCurso::getHead() {
+    return this -> head;
 }

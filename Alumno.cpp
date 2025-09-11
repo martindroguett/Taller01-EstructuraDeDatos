@@ -60,3 +60,32 @@ void Alumno::verNotas() {
 void Alumno::getCursos() {
     listaC.ver();
 }
+
+void Alumno::getPromedio(int id) {
+    if (id == 0) {
+        NodoCurso* aux = listaC.getHead();
+
+        int count = 0;
+        double sum = 0;
+
+        while (aux != nullptr) {
+            Curso* curso = aux -> getCurso();
+            count++;
+            sum += curso -> getPromedio();
+
+            aux = aux -> getSig();
+        }
+
+        std::cout << "El promedio general de " << this -> getNombre() << " es: " << 
+        (sum / count) << std::endl;
+
+        return;
+    }
+    
+    Curso* curso = listaC.buscar(id);
+
+    std::cout << "El promedio de " << this -> getNombre() << " en " << curso -> getNombre() 
+    << " es: " << curso -> getPromedio() << std::endl;
+
+    return;
+}
