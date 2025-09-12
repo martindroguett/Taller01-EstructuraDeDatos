@@ -24,16 +24,25 @@ void ListaAlumno::insertar(Alumno& alumno) {
 
     if (head == nullptr) {
         head = newNodo;
+        std::cout << "Student registered successfully!" << std::endl << std::endl;
         return;
     }
 
     NodoAlumno* aux = head;
 
-    while (aux -> getSig() != nullptr) {
+    while (aux != nullptr) {
+        if (aux -> getAlumno() -> getId() == newNodo -> getAlumno() -> getId()) {
+            std::cout << "This ID already exists in students!" << std::endl << std::endl;
+            delete newNodo;
+            return;
+        }
+
+        if (aux -> getSig() == nullptr) break;
         aux = aux -> getSig();
     }
 
     aux -> setSig(newNodo);
+    std::cout << "Student registered successfully!" << std::endl << std::endl;
 
 }
 

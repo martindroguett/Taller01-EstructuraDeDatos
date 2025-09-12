@@ -52,7 +52,7 @@ double controlErrorDouble() {
     }
 }
 
-//Revisar id repetida
+//Listo
 void registrarAlumno() {
     int id = 0;
     string nombre = "";
@@ -90,8 +90,6 @@ void registrarAlumno() {
     Alumno* alumno = new Alumno(id, nombre, apellido, carrera, fechaIngreso);
 
     listaA.insertar(*alumno);
-         
-    cout << "Student registered successfully!" << endl << endl;
 
 }
 
@@ -122,7 +120,7 @@ void buscarAlumno() {
     cout << endl;
 }
 
-//eliminar registro de notas e historial de cursos
+//Listo
 void eliminarAlumno() {
     int id = 0;
 
@@ -164,11 +162,11 @@ void gestionAlumno() {
 
 }
 
-//revisar id repetida!
+//Listo
 void registrarCurso() {
     int id = 0;
     string nombre = "";
-    int maxEst;
+    int maxEst = 0;
     string carrera = "";
     string profesor = "";
 
@@ -186,11 +184,11 @@ void registrarCurso() {
         nombre = controlErrorString();
     }
      
-    while (id <= 0) {
+    while (maxEst <= 0) {
         cout << "Enter course's maximum capacity" << endl;
-        id = controlErrorInt();
+        maxEst = controlErrorInt();
 
-        if (id <= 0) {
+        if (maxEst <= 0) {
             cout << "- The maximum capacity must be a positive integer" << endl;
         }
     }
@@ -208,8 +206,7 @@ void registrarCurso() {
     Curso* curso = new Curso(id, nombre, maxEst, carrera, profesor);
 
     listaC.insertar(*curso);
-         
-    cout << "Course registered successfully!" << endl << endl;
+
 }
 
 //Listo
@@ -240,7 +237,7 @@ void buscarCurso() {
     cout << endl;
 }
 
-//eliminar registro de notas e historial de cursos
+//Listo
 void eliminarCurso() {
     int id = 0;
 
@@ -466,6 +463,7 @@ void todosCarrera() {
         carrera = controlErrorString();
     }
 
+    cout << endl;
     listaA.buscarPorCarrera(carrera);
 
     cout << endl;
@@ -531,6 +529,8 @@ void promedioNotas() {
     if (alumno -> cursando(curso)) {
         alumno -> getPromedio(curso -> getId());
     }
+
+    cout << endl;
 }
 
 //Listo
@@ -555,21 +555,23 @@ void promedioGeneral() {
     }
 
     alumno -> getPromedio(0);
+    cout << endl;
 }
 
 //Listo
 void reportes() {
     int opcion = 0;
 
-    while (opcion != 5) {
+    while (opcion != 7) {
         cout << "=== Reports ===" << endl;
         cout << "Pick an option" << endl;
         cout << "1) See all students enrolled in a major" << endl;
         cout << "2) See all courses enrolled by a student" << endl;
         cout << "3) Calculate the grades average of a student" << endl;
         cout << "4) Calculate the overall grade average of a student" << endl;
-        cout << "5) Return" << endl;
-        cout << "> ";
+        cout << "5) View all students" << endl;
+        cout << "6) View all courses" << endl;
+        cout << "7) Return" << endl;
         opcion = controlErrorInt();
         cout << endl;
 
@@ -577,7 +579,9 @@ void reportes() {
         else if (opcion == 2) { todosCurso(); }
         else if (opcion == 3) { promedioNotas(); }
         else if (opcion == 4) { promedioGeneral(); }
-        else if (opcion != 5) { cout << "- Enter a valid option!" << endl; }
+        else if (opcion == 5) { listaA.ver(); }
+        else if (opcion == 6) { listaC.ver(); }
+        else if (opcion != 7) { cout << "- Enter a valid option!" << endl; }
     }
 }
 
@@ -591,7 +595,7 @@ int main() {
         cout << "1) Students management" << endl;
         cout << "2) Courses management" << endl;
         cout << "3) Courses registrations" << endl;
-        cout << "4) Grades Managemente" << endl;
+        cout << "4) Grades management" << endl;
         cout << "5) Reports" << endl;
         cout << "6) Exit" << endl;
 

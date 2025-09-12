@@ -22,17 +22,27 @@ void ListaCurso::insertar(Curso& curso) {
 
     if (head == nullptr) {
         head = newNodo;
+        std::cout << "Course registered successfully!" << std::endl << std::endl;
         return;
     }
 
     NodoCurso* aux = head;
 
-    while (aux -> getSig() != nullptr) {
-        aux = aux -> getSig();
+    while (aux != nullptr) {
+        if (aux -> getCurso() -> getId() == newNodo -> getCurso() -> getId()) {
+            std::cout << "This ID already exists in courses!" << std::endl << std::endl;
+            delete newNodo;
+            return;
+        }
+
+        if (aux->getSig() == nullptr) break;
+
+        aux = aux->getSig();
+
     }
 
     aux -> setSig(newNodo);
-
+    std::cout << "Course registered successfully!" << std::endl << std::endl;
 }
 
 //Listo
@@ -128,7 +138,7 @@ void ListaCurso::eliminar(int id, bool eliminar) {
 //Listo
 void ListaCurso::verNotas() {
     if (head == nullptr) {
-        std::cout << "There's nothing to see here!" << std::endl;
+        std::cout << "There's nothing to see here!" << std::endl << std::endl;
         return;
     }
 
@@ -145,7 +155,7 @@ void ListaCurso::verNotas() {
 //Listo
 void ListaCurso::ver() {
     if (head == nullptr) {
-        std::cout << "There's nothing to see here!" << std::endl;
+        std::cout << "There's nothing to see here!" << std::endl << std::endl;
         return;
     }
 
