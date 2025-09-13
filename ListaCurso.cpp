@@ -103,12 +103,13 @@ void ListaCurso::eliminar(int id, bool eliminar) {
 
         head = head -> getSig();
 
-        if (eliminar) {
-            delete aux -> getCurso();
-        }
         delete aux;
 
-        std::cout << "Course deleted successfully" << std::endl;
+        if (eliminar) {
+            std::cout << "Course deleted successfully" << std::endl;
+        } else {
+            std::cout <<"The course was successfully unenrolled" << std::endl;
+        }
 
         return;
     }
@@ -127,12 +128,13 @@ void ListaCurso::eliminar(int id, bool eliminar) {
 
     aux -> setSig(aux2 -> getSig());
 
-    if (eliminar) {
-        delete aux2 -> getCurso();
-    }
     delete aux2;
 
-    std::cout << "Course deleted successfully" << std::endl;
+    if (eliminar) {
+        std::cout << "Course deleted successfully" << std::endl;
+    } else {
+        std::cout <<"The course was successfully unenrolled" << std::endl;
+    }
 }
 
 //Listo

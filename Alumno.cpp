@@ -48,7 +48,7 @@ bool Alumno::cursando(Curso* curso) {
 //Listo
 void Alumno::eliminar(Curso* curso) {
 
-    this -> listaC.eliminar(curso -> getId(), true);
+    this -> listaC.eliminar(curso -> getId(), false);
 }
 
 //Listo

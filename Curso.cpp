@@ -51,7 +51,7 @@ void Curso::inscribir(Alumno* alumno) {
 
 //Listo
 void Curso::eliminar(Alumno* alumno) {
-    this -> listaA.eliminar(alumno -> getId(), true);
+    this -> listaA.eliminar(alumno -> getId(), false);
     alumno -> eliminar(this);
     inscritos--;
 }

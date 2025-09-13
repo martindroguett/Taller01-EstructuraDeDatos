@@ -134,12 +134,11 @@ void ListaAlumno::eliminar(int id, bool eliminar) {
 
         head = head -> getSig();
 
-        if (eliminar) {
-            delete aux -> getAlumno();
-            std::cout << "The student was deleted succesfully!" << std::endl;
-        }
-
         delete aux;
+
+        if (eliminar) {
+            std::cout << "The student deleted was succesfully!" << std::endl;
+        }
 
         return;
     }
@@ -158,12 +157,11 @@ void ListaAlumno::eliminar(int id, bool eliminar) {
 
     aux -> setSig(aux2 -> getSig());
 
-    if (eliminar) {
-        delete aux2 -> getAlumno();
-    }
     delete aux2;
 
-    std::cout << "The student deleted was succesfully!" << std::endl;
+    if (eliminar) {
+        std::cout << "The student deleted was succesfully!" << std::endl;
+    }
 }
 
 //Listo
