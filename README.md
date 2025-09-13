@@ -3,3 +3,6 @@ g++ -std=c++11 -o main main.cpp Alumno.cpp Curso.cpp ListaAlumno.cpp NodoAlumno.
 
 Ejecutador:
 ./main
+
+Martín Ignacio Droguett Robledo
+21.919.910-4
